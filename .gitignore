@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment files (CRITICAL: Never commit secrets)
+.env
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+**/.env*
+
+# Next.js build output
+.next/
+**/.next/
+out/
+**/out/
+build/
+**/build/
+
+# Graphify / temporary outputs
+graphify-out/
+
+# Scratch & test scripts
+check_profiles.js
+test_nan.js
+test_undefined.js
+
+# Debug and system logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.DS_Store
+Thumbs.db

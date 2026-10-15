@@ -1,0 +1,440 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --font-sans: "Inter";
+  --font-serif: "Playfair Display";
+  --bg: #F9F8FF;
+  --section: #FFFFFF;
+  --accent-primary: #1A1A3E;
+  --accent-secondary: #C9A84C;
+  --accent: #6C3FC5;
+  --highlight: #E7E3F7;
+  --muted: #E7E3F7;
+  --ink: #1A1A1A;
+  --text: #1A1A1A;
+  --divider: #E7E3F7;
+
+  /* Customer/Profile Page Design Token overrides */
+  --line: rgba(108, 63, 197, 0.12);
+  --surface: rgba(249, 248, 255, 0.6);
+  --accent-deep: #6C3FC5;
+  --accent-soft: rgba(108, 63, 197, 0.08);
+  --muted-ink: rgba(26, 26, 26, 0.6);
+}
+
+/* Elite Boutique Buttons & Section Labels */
+.customer-section-label {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+  background: linear-gradient(135deg, var(--accent-secondary) 0%, #A37F2C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.customer-section-title {
+  font-family: var(--font-serif), serif;
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.customer-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #0D0D26 100%);
+  color: #FFFFFF;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.8rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(26, 26, 62, 0.3);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.customer-primary-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.customer-primary-button:hover::before {
+  left: 100%;
+}
+
+.customer-primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px -10px rgba(26, 26, 62, 0.4), 0 0 15px rgba(201, 168, 76, 0.15);
+  border-color: rgba(201, 168, 76, 0.4);
+}
+
+.customer-primary-button:active {
+  transform: translateY(0);
+}
+
+.customer-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  color: var(--accent-primary);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.8rem;
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(26, 26, 26, 0.02);
+}
+
+.customer-secondary-button:hover {
+  background: var(--surface);
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(201, 168, 76, 0.1);
+}
+
+.customer-secondary-button:active {
+  transform: translateY(0);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif), serif;
+  letter-spacing: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softZoom {
+  from {
+    transform: scale(1.06);
+    opacity: 0.88;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes marqueeLoop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes camliqaSpark {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 0 rgba(215, 199, 255, 0));
+  }
+  45% {
+    transform: rotate(8deg) scale(1.08);
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(215, 199, 255, 0.65));
+  }
+  70% {
+    transform: rotate(-6deg) scale(0.98);
+    filter: drop-shadow(0 0 10px rgba(215, 199, 255, 0.4));
+  }
+}
+
+@keyframes camliqaRing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.animate-rise {
+  animation: riseIn 700ms ease-out both;
+}
+
+.animate-soft-zoom {
+  animation: softZoom 950ms ease-out both;
+}
+
+.auto-marquee {
+  animation: marqueeLoop 34s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll {
+  animation: marqueeLoop 28s linear infinite;
+  will-change: transform;
+}
+
+.camliqa-ai-icon {
+  animation: none;
+  transform-origin: center;
+}
+
+.camliqa-ai-icon-wrap {
+  position: relative;
+  overflow: visible;
+}
+
+.camliqa-ai-icon-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 1px solid rgba(215, 199, 255, 0.4);
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 200ms ease-out;
+  pointer-events: none;
+}
+
+.ai-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(197, 160, 89, 0.38) rgba(249, 248, 255, 0.42);
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+.ai-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.ai-scrollbar::-webkit-scrollbar-track {
+  background: rgba(249, 248, 255, 0.34);
+  border-radius: 999px;
+}
+
+.ai-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(197, 160, 89, 0.58), rgba(215, 199, 255, 0.5));
+  border-radius: 999px;
+  border: 1.5px solid rgba(249, 248, 255, 0.45);
+}
+
+.ai-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(197, 160, 89, 0.74), rgba(215, 199, 255, 0.66));
+}
+
+.camliqa-ai-icon-wrap:hover .camliqa-ai-icon,
+.camliqa-ai-icon-wrap:focus-visible .camliqa-ai-icon,
+.camliqa-ai-icon-wrap.is-active .camliqa-ai-icon {
+  animation: camliqaSpark 2.8s ease-in-out infinite;
+}
+
+.camliqa-ai-icon-wrap:hover::after,
+.camliqa-ai-icon-wrap:focus-visible::after,
+.camliqa-ai-icon-wrap.is-active::after {
+  opacity: 1;
+  animation: camliqaRing 2.8s ease-out infinite;
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-[1536px] px-4 sm:px-6 lg:px-6;
+}
+
+.panel {
+  @apply rounded-xl bg-section shadow-soft;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.cinematic-surface {
+  background:
+    linear-gradient(135deg, rgba(26, 29, 54, 0.97) 0%, rgba(42, 36, 70, 0.95) 52%, rgba(26, 29, 54, 0.99) 100%);
+}
+
+/* Lenis Smooth Scroll Fixes */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Luxury Effects */
+.luxury-text-glow {
+  text-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+}
+
+.luxury-card {
+  @apply relative overflow-hidden rounded-xl bg-white/30 backdrop-blur-sm border border-white/40 transition-all duration-500 hover:bg-white/50 hover:shadow-[0_30px_60px_-20px_rgba(197,160,89,0.12)];
+}
+
+.luxury-card::after {
+  content: "";
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(197, 160, 89, 0.15), transparent 60%);
+}
+
+.luxury-card:hover::after {
+  @apply opacity-100;
+}
+
+.golden-wash {
+  background: linear-gradient(180deg, rgba(201, 168, 76, 0.08) 0%, transparent 100%);
+}
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 10;
+  pointer-events: none;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  mix-blend-mode: overlay;
+}
+
+/* Shared page aurora (unified background) */
+.camliqa-aurora {
+  position: relative;
+  background-color: var(--bg);
+}
+
+.camliqa-aurora::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(201, 168, 76, 0.12) 0%, rgba(201, 168, 76, 0) 40%),
+    radial-gradient(circle at 82% 18%, rgba(108, 63, 197, 0.08) 0%, rgba(108, 63, 197, 0) 35%),
+    radial-gradient(circle at 50% 50%, rgba(201, 168, 76, 0.05) 0%, rgba(201, 168, 76, 0) 50%),
+    linear-gradient(110deg, #FDFBFF 0%, #F5F3FF 52%, #FDFBFF 100%);
+}
+
+.camliqa-aurora > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Unified Canvas Sections ─── */
+section {
+  background-color: transparent !important;
+}
+
+/* Specific overrides for sections that NEED backgrounds can be added here, 
+   but generally we want them transparent to show the global canvas. */
+
+.luxury-overlay-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grain Overlay (Global) */
+.global-grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.025;
+  z-index: 50;
+  pointer-events: none;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  mix-blend-mode: overlay;
+}
