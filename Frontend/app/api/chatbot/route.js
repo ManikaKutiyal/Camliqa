@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { getSupabaseAdminClient } from "@/lib/server/supabase-admin"
+import { createAdminClient } from "@/lib/server/supabase-admin"
 import { upsertChatSession, getChatSession } from "@/services/supabase/chatSessions"
 import { getStorefrontProducts } from "@/services/supabase/products"
 import { getGeminiEnv, hasGeminiEnv } from "@/lib/server/env"
@@ -27,7 +27,7 @@ export async function POST(request) {
     }
 
     const { apiKey } = getGeminiEnv()
-    const supabase = getSupabaseAdminClient()
+    const supabase = createAdminClient()
     
     // Get user session if logged in
     const cookieStore = cookies()

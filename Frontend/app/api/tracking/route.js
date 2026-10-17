@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { getShiprocketEnv, hasShiprocketEnv } from "@/lib/server/env"
-import { getSupabaseAdminClient } from "@/lib/server/supabase-admin"
+import { createAdminClient } from "@/lib/server/supabase-admin"
 import { SUPABASE_TABLES } from "@/lib/supabase/schema"
 
 import { getShiprocketToken } from "@/lib/server/shiprocket-client"
@@ -23,7 +23,7 @@ export async function GET(request) {
     }
 
     let targetAwb = awb
-    const supabase = getSupabaseAdminClient()
+    const supabase = createAdminClient()
 
     if (!targetAwb) {
       // Look up AWB in the database

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -247,7 +247,7 @@ function CustomDropdown({ label, value, options, onChange }) {
   );
 }
 
-export default function ShopPage() {
+function ShopPageContent() {
   const searchParams = useSearchParams();
   const [products, setProducts] = useState([]);
   const [activePromotion, setActivePromotion] = useState(null);
@@ -888,5 +888,13 @@ export default function ShopPage() {
         <Footer />
       </main>
     </div>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <ShopPageContent />
+    </Suspense>
   );
 }

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
-import { requireAuthenticatedUser } from "@/lib/server/auth"
-import { getSupabaseAdminClient } from "@/lib/server/supabase-admin"
+import { requireAuthenticatedUser } from "@/lib/security/auth"
+import { createAdminClient } from "@/lib/server/supabase-admin"
 import { registerAffiliate } from "@/services/supabase/affiliates"
 
 export async function POST(request) {
@@ -13,7 +13,7 @@ export async function POST(request) {
     const body = await request.json().catch(() => ({}))
     const nameSeed = body.name || user.user_metadata?.full_name || user.email?.split("@")[0] || ""
 
-    const supabase = getSupabaseAdminClient()
+    const supabase = createAdminClient()
     const { data, error, alreadyRegistered } = await registerAffiliate(supabase, user.id, nameSeed)
 
     if (error) {

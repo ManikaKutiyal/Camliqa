@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
-import { requireAuthenticatedUser } from "@/lib/server/auth"
-import { getSupabaseAdminClient } from "@/lib/server/supabase-admin"
+import { requireAuthenticatedUser } from "@/lib/security/auth"
+import { createAdminClient } from "@/lib/server/supabase-admin"
 import { getAffiliateByUserId, getAffiliateOrders } from "@/services/supabase/affiliates"
 
 export async function GET(request) {
@@ -10,7 +10,7 @@ export async function GET(request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const supabase = getSupabaseAdminClient()
+    const supabase = createAdminClient()
     const { data: affiliate } = await getAffiliateByUserId(supabase, user.id)
 
     if (!affiliate) {
